@@ -1,4 +1,3 @@
-![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/cadfb83a-0ee3-4035-afa8-3fbb86323d08)SKY130_DY1_SK3:
 Getting familiar to open source EDA TOOLS
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/43011131-5ea9-4c11-8c77-625ed9b754b2)
 
