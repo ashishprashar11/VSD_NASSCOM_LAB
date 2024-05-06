@@ -233,6 +233,3 @@ Similar slew fall wave,
 		d. Slew be high - low, will give below values
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/444f1da4-ca0a-40fb-9d60-afe7904d92c5)
 			
-
-	
-
