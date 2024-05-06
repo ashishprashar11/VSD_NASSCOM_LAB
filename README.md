@@ -1,4 +1,4 @@
-SKY130D1SK1
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/4c078719-4a26-4775-92e7-5957d03b9edc)SKY130D1SK1
 Package : The outer 256 pin package(for eg), pin locations are driven by board
 Pads : Package is connected to chip through pads, any signal go too and fro the chip is through the PADS only.
 Core: Has all the logic ( RISC V SOC, Foundry Ips etc )in it
@@ -118,4 +118,105 @@ Getting familiar to open source EDA TOOLS
 
 
 15. To see timing report go to reports folder, where all reports exists
+
+DAY2
+SKY130D1SK1
+Package : The outer 256 pin package(for eg), pin locations are driven by board
+Pads : Package is connected to chip through pads, any signal go too and fro the chip is through the PADS only.
+Core: Has all the logic ( RISC V SOC, Foundry Ips etc )in it
+
+Die is manufactured on Si wafer.
+Foundry IP : IP need some specific technique to be ready.
+Macro : Pure digital logic.
+Interface files are used to communicate with Foundry.
+
+SKY L1
+
+
+ISA : Instruction set architecture, used to interact with computer.
+For C Program to run on HW with shown layout(chip interior), it  required to be first compiled in  assembly language program(RISC V assembly language program) which is then converted in  machine language (binary). Finally these bits gets executed in this layout.
+
+Interface between the RISC V arch and layout is HDL. We need to implement this RISC V specs using some RTL.
+
+From RLT to layout it is RTL2GDS Flow.
+
+
+
+SKY_L2 : 
+
+How applications like Firefox runs on hardware ?
+Application software enters into system software which converts it to binary language.
+Major components of system software are OS, compiler, assembler.
+OS handles IO operations and memories and take app to assembly language program and then to Machine language, that can be handled by HW. 
+
+C/C++/java --> Compiler --> RISCv Format (.exe file) (depends on instruction set)-->Assembler takes this and converts to binary numbers.
+
+
+Instruction set arch is interface between compiler and assembler
+Assembler output  is in Binary.
+
+SKY130_D1_SK2:
+
+
+PDK: it is a process design kit & is a interface between fab and design.
+
+For open source ASICS we need below tools 
+
+SKY_L2:
+
+These are some major implementation steps.
+
+
+
+
+
+
+
+SKY130_DY1_SK3:
+Getting familiar to open source EDA TOOLS
+
+
+	1. Open terminal in UBUNTU
+	2. Change working directory to work/tools/openlane_working_directory/openlane
+	3. There you will see flow.tcl file by using ls -ltr.
+	4. Type "docker" in terminal,
+	5. Source flow.tcl in interactive mode by typing ./flow.tcl -interactivep it will shows the above view.
+	6. Use "package require openlane 0.9".
+	7. You can see already build designs present in designs in directory work/tools/openlane_working_directory/openlane/designs.
+	8. Before running the synthesis, need to setup data for design, as only few files are there 
+	9. 
+	
+	10. To setup, use prep -design picorv32a
+	11. It will merge files and we don’t need different files it will be shown like below in terminal 
+	
+	
+	12. A new folder named Runs will come into the directory
+
+12. To view TLEF information, go to directory  work/tools/openlane_working_directory/openlane/designs/picorv32a/runs/<date>/tmp,  and open merge.lef. You will get layer and wire and cell level information.
+	
+
+
+	2. Report and result will have information after runs.
+	3. Conf.tcl tell info of parameters taken during the run.
+
+	4. In open lane we can make changes in the run. Parameters like core utilization can be changed.
+	5. Further run the synthesis by run_synthesis in Openlane prompt. It will run BIOS Synthesis and ABIS run (to get chip module area).
+
+	6. STA has been done, synthesis and ABIS run also get completed, we can see chip module area
+
+
+	7. Flop ratio = No. of D Flip flop/total no. of cells
+	8. So Fxtp= 1613
+
+	And, total no. of cells=14876 
+
+	
+	Flop count = 1613/14876=0.1084*100= 10.8%
+	
+13. To see run result for synthesis, go to directory  work/tools/openlane_working_directory/openlane/designs/picorv32a/runs/<date>/results/synthesis. It contains synthesized netlist
+14. You can view synthesized netlist. 
+
+
+15. To see timing report go to reports folder, where all reports exists
+
 
