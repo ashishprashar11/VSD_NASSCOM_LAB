@@ -301,15 +301,19 @@ These files shows the system default settings
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/6b8da37f-9ba2-4c1f-bf45-bc12bd25fbfc)
 
 	12. Now we will check whether all set switches from config did not took over defaults from log in ../picorv32a/runs/<date_time>/logs/floorplan in file ioplacer.log
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/4312a5c4-a458-43e2-8b94-785abfed4b53)
 
 	13. To view the floor plan, go to ../results/floorplan, open def file (design exchange format) where you can see all information. It also has die area, 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/09ea5f09-2077-4847-b6e4-9744dc161d07)
 
 (0 0) lower left x value and lower left y value
 (660685 671405) upper right x and upper right y value
 Units =1000 Micron, 1 micron is 1000Database units so 660685/1000=660.685 mm is dimention
 	14. To see layout use magic with command 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ce8d8326-4f35-491b-b40e-76ec2e3751b4)
 
 To see 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7b31f1f1-d252-49b2-b389-45000a4930a3)
 	
 
 
@@ -318,27 +322,33 @@ P&R stage of PD flow
 	1. Binding the netlist with the physical cell.
 		a. NOT gate is triangle but in reality it has some width and height.
 		
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c4585523-5afb-43e0-b4e0-38d4a677e010)
 
 		b. Similar is the case for all the components of netlist, all have specific width and height.
-		
+		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a86a7641-e58f-454e-bdf7-f1a778302e72)
+
 			
 		c. These things are present in shelves called library. Library also have the information of timings of these components in huge set
 		d. Library is categorized as 2 subparts
 			i. Of only shape and size
 			ii. Of only timings
 		e. So library has width info, delay info and required information like conditions of flip flop outputs. It also has various shapes of these gates. Ey showing biggersizes from LHS to RHS 
-			
+		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/933dfb85-9e28-4672-bee8-6b6c4e1ba07a)
+	
 		f. After giving proper shape and sizes to all gates, next is to take them and place on floor plan.
 	2. As per of now we have the proper floorplan with IO defines and placed, netlist, shape and size of all gates.
 	3. Now we need to place this on floor plan
 	4. Now we need to place the netlist on the floorplan
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/76185514-d37b-4a6a-81cf-cde75d40708c)
+
 		
 	5. As we have preplaced cells on floorplan, placement will make sure these locations are intact and no cell is placed in this area
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/6756a68e-c83e-4fb6-ab8d-536f025a1b37)
+
 	6. Need to take physical view of netlist and place on the floor plan.
 	7. Logic one placed in straight line with some space, logic 2 is placed together with minimal delay between cells, 3rd is placed diagonally as din3 and din4 distance is higher. Similarly 4th is placed as shown in color codes of fig below
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f43cf9c7-ccaf-47ab-a821-a3d13c71cf5e)
+
 	8. Now after placement we have to solve for distance problem. So need to do some optimization. Before routing we need to estimate the capacitances. 
 	9. Din 2 to FF1 (yellow) length is huge so resistance exists.
 	10. So will try to place something in between so that signal go phase 1 phase and sent to FFI
@@ -347,16 +357,20 @@ P&R stage of PD flow
 	13. More repeaters more loss of area.
 	14. Din 1 to FF1 SI is maintained, FF1 to 1 also OK, 1 to 2 also OK, 2 to FF2 also OK.
 	15. Slew depends on capacitor value. If high cap value, high charge required to charge capacitor so slew will get impacted
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/67c0f4d0-254e-4128-af5f-54e0cb55df31)
+
 	
 	16. Din 2 is far from FF1, slew (signal transition goes beyond transition limit so signal got impacted) so need to break huge length using repeaters. 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d9e2d271-a8db-4e1f-a32f-666f3fadc5ae)
+
 	17. FF1 to FF2 circuited follows abutment as circuit works at very high speed so need to minimize delay. 
 	18. Will try to optimize the placement of other 2.
-		a. For circuit 3, Din 3 at sufficient distance from FF1, FF1-->1 also no buffer, 1-->2 also not required but based on slew analysys, distance between 2 and FF2 is high so need buffer.
+		a. For circuit 3, Din 3 at sufficient distance from FF1, FF1-->1 also no buffer, 1-->2 also not required but based on slew analysys, distance between 2 and FF2 is high so need buffer.![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0d496baa-584f-4cb9-bf2f-ba0ca8bfc671)
+
 		
 		b. For circuit 3, its tricky, distances are high, so need to place buffers, but some logic is also there where we can't place buffer. Cross connection can be taken on the different layers.
-		
+		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d4b3f48f-e70c-47fe-846c-3bc8ece5a6e9)
+
 		
 	19. Now need to check for correctness. We have to check the data path considering clock is ideal.
 
@@ -378,13 +392,17 @@ NEED TO CHARACTERIZATION:
 	14. Objective is to converge overflow value. Ie happens when overflow value reduces.
 	15. HPWL: Half parameter wave length.
 	16. You can see placement data like below
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/57d013c3-0cec-42ac-9a70-315b8227e9c5)
 
 	17. Placement of standard cell in std cell rows are shown as below
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f1e1d79e-8513-4e9f-b607-41788d4d6e53)
 
 	18. Let the placement and routed design be 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/abf38a1f-9704-47d7-bdc1-31f9ce3c18ef)
 
 	19. Library is a place where we keep all macros and Ips
 	20. CELL DESIGN FLOW
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/34766f3d-243d-4cb2-a450-39d92204934f)
 
 	21. We get inputs from foundry.
 	22. User defined specifications:
@@ -395,23 +413,29 @@ NEED TO CHARACTERIZATION:
 	23. Designs step
 	-Circuit design: involves 2 steps 1. Implement function 2. model PMOS & NMOS with specific W/L ratios. Are based on spice simulations. It will give CDL file.
 	-Layout design: Implement circuit as per PMOS and NMOS connections. Includes PMOS AND NOMS network graph. After network path we need Euler's Path 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/e19dcbf9-0120-45e7-9e4d-2f2cb750c43f)
+
 	After euler path needs stick diagram as shown below
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0bbe0bc6-b712-40b1-b019-7dc583171d1c)
+
 	Convert this stick diagram into layout while adhere to foundry DRC rules and user rules.
 	-Characterization : extract parasitic and characterize in in term of timing , before characterization we have GDSII (layout file), LEF is having width and height of cell and extracted spice netlist has L &R values of each element in layout.
 	
 	After this last step is characterization, where we get timing noise and power information & output of this is timing,noise ,power .libs files
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/8b739338-dfc4-4877-b0b5-b32984debe5b)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0d9af877-25aa-4e76-be4f-efbc9573dfa5)
+
 	
 	
 	
 	
 	CHARACTERIZATION FLOW:: 
 	a. The layout of buffer be
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/45f88d07-8f46-46de-b088-48bc6a29656d)
+
 	b.  we have description of buffer and spice extracted netlist 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ce8b6696-048f-4390-bf57-234424cc1144)
+
 
 	c. 
 	d. Flow be:
