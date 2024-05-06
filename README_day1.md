@@ -158,8 +158,9 @@ Will see syntax for GUNA software, will see according to below diagram![image]![
 		Slew low defined lower side values colsed to 0 power supply. Typical value is 20-30%
 		Slew_high_rise_thr also required with this to get sleits 20%power from max power supply
 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7182a304-a07f-4d8b-84fe-286c975093ca)
 
-	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ec5aa76b-c71b-4e23-8064-c3b3a018b921)
+
 	
 		Similar definitions also applies for falling waveforms
 		
@@ -172,15 +173,18 @@ Will see syntax for GUNA software, will see according to below diagram![image]![
 		To calculate slew we need these
 		b. Let red be input, blue be output and stimulus is applied. Output is taken from buffer.
 		In_rise_thr is threshold of delay is 50% of slew waveform 
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/109fb82c-e1c0-4a24-81a7-6c14dd30b977)
-
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/1b91d1da-2afc-4bea-9b9c-77dd0ece5d71)
+		
 		Similarly out rise threshold 
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/52cc40fa-a7b5-4596-8b8b-317325d7d5fe)
+	
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/26cc40bb-6a35-4176-b9ae-69d176351d11)
 
 		Similar is the case for fall waveforms.
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/83ea2ec3-7c2d-4fb0-a32e-442fe4ef70b4)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/151c5161-a285-48ad-9ad0-2867694f8f18)
+		
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/1820623a-4816-4d15-8cea-1480e24388dc)
 
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/94464548-a1d0-455d-8a69-d1a106caed13)
+		
 
 		
 		Any input has 2 delays, rise and fall delays.
@@ -189,39 +193,46 @@ Will see syntax for GUNA software, will see according to below diagram![image]![
 		PROPOGATION DELAY::
 		a. It may lead to unexpected results
 		b. Will see wrt this waveform 
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/e3d548ad-748e-4e35-a7cf-af464345e60f)
+			
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/db81d9c3-4189-454d-b68d-6bd5a1dd894e)
 
 			
 		c. Way to calculated is shown in diagram below
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/786d4316-fd50-4b3d-a4cd-3f8549e3ff08)
 			
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/8de0988f-0cc6-4bcd-8047-9be5c2608f29)
+			
 
 		d. If input waveform and output waveform be below with 50% threshold with mentioned values
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/8ca220ad-8a57-4745-bccc-3c8fcc145c50)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/bbc5f13c-25f8-4fc8-b374-cbf7185b74af)
+			
 
 			3.23-3.207=0.023  
 		e. Delay is 23micro sec. here thresholds are 50%. If somehow threhold pont moves down, time in rise be 3.263 and fall threshold be 3.221ns. So we get negative delay. If poor choice made for threshold selection we get negative thresholds
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/552f16fa-ec8a-477d-8ccb-f056b0cd40a2)
+			
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a26567ab-0b3b-43e2-b3f4-554d159c9ba9)
 
 			
 		f. If we have correct threshold values then also possibility is there of negative threshold. If 2 invertors/buffers are far apart, then as per input waveform we can slew is very high.
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/4a1340d6-8749-498a-bbc1-102513828a94)
-
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/94f2bf4f-ea40-4411-a2e1-e0388f77b3f5)
+			
 			Output come before input, we get negative delays. This is problem with circuit design.
 			
 	c. Transition time:
 		a. Slew of waveform of rising wave, 
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/08e3f52f-a7bf-47c1-890f-9da9fa84ee3a)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a6a27779-3457-46bd-90ca-0f05e493c48e)
+		
 
 Similar slew fall wave, 
 		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0f0da18a-cfa9-44ba-9b43-de545b8269ff)
 
 		b. 20% of VDD is general value for low rise and fall
 		c. 80% of VDD is general value for high rise and fall
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7ba071de-2450-43f4-bda1-3ac458033291)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/601cb343-8a24-474d-9efc-d9cac8badcb1)
+			
 
 		d. Slew be high - low, will give below values
-			![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/cb9d11ff-08eb-4bfc-8057-a034f179ee95)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/444f1da4-ca0a-40fb-9d60-afe7904d92c5)
+			
 
 	
 
