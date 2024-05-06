@@ -152,17 +152,21 @@ Will see syntax for GUNA software, will see according to below diagram![image]![
 
 	b. We plotted waveforms at U1 & U2.
 		a. Red is first invertor, blue is second
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/5c0fc9f8-d253-41d7-890b-6ffc371ec85d)
-
-		Slew low defined lower side values colsed to 0 power supply. Typical value is 20-30%
-		Slew_high_rise_thr also required with this to get sleits 20%power from max power supply
-  ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/478200f5-d3a7-4688-912f-f9231c29e713)
+  ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/99521c73-099c-48e2-8bac-973c56a3ca1b)
 
 		
-		Similar definitions also applies for falling waveforms
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/81af503e-04fc-497f-a77b-6394b328102b)
+		Slew low defined lower side values colsed to 0 power supply. Typical value is 20-30%
+		Slew_high_rise_thr also required with this to get sleits 20%power from max power supply
 
-		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/531968e4-7649-4255-b047-8a87d9b0a7cd)
+
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ec5aa76b-c71b-4e23-8064-c3b3a018b921)
+	
+		Similar definitions also applies for falling waveforms
+		
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ec2b4f3d-5ce5-4415-941c-97a280520e7f)
+
+	
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/eb124827-6203-4c36-883f-d10a8e2bce94)
 
 		
 		To calculate slew we need these
