@@ -438,11 +438,13 @@ NEED TO CHARACTERIZATION:
 
 
 	c. 
+ 
 	d. Flow be:
 		a. Model file reading
 		b. Reading extracted spice netlist
 		c. Recognize behavior of buffer
 		d. Read subcircuit of invertor
+  
 			
 				
 			
