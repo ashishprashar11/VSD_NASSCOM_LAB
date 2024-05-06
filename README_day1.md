@@ -55,7 +55,7 @@ Getting familiar to open source EDA TOOLS
 
 
 16. To see timing report go to reports folder, where all reports exists
-![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/efe51ba4-49e9-4efb-b5bc-d1d96ecd2fe3)
+
 
 
 DAY 2
