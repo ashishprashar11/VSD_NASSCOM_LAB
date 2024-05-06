@@ -1,4 +1,3 @@
-![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/4c078719-4a26-4775-92e7-5957d03b9edc)SKY130D1SK1
 Package : The outer 256 pin package(for eg), pin locations are driven by board
 Pads : Package is connected to chip through pads, any signal go too and fro the chip is through the PADS only.
 Core: Has all the logic ( RISC V SOC, Foundry Ips etc )in it
@@ -123,37 +122,48 @@ DAY2
 SKY130_D2_SK1
 
 How to define the width and height of core and Die (W&H calculation) ?
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/71488e04-201c-4eb3-bce5-1c48af1be321)
 
 
 	1. Start with basic netlist with launch and capture flipflop having combination circuit in between 
 	2. Netlist defines the connectivity between the components
 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/00fd26e3-27f9-4662-8981-0b31a52fb3dd)
 
 	3. Give proper length and width to gates and FF's
 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/3e7dd08f-9588-4368-9977-cf8128727aeb)
 
 	4. To find dimensions of core and die, we will see dimensions of the std cells
 	5. Let's give rough dimensions of all of them
 Let the area of both FF's and gates(std cells) be 1 sq unit 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ba77796f-0bcf-4ded-88ec-05a32b44a6d5)
 
 	
 	6. With help of this, first will remove wires and combine them to get the approx. are for all a a rough dimension ie 4 sq units, it will be min area acquired by the netlist.
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/333a8a8c-a060-459f-8c32-b5b716e01b29)
 
 	7. For core and die 
 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/e0f79973-78e6-49a4-a5d7-72451119934f)
 
 
 If 4sq units  occupies full core area then it means core utilization is 100%
 	8. Utilization factor is defined as are occupied by netlist / total area of the core
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/dd64baf6-868b-4af0-901a-3288b2b9d694)
 
 Utilization factor here is 1, means whole core is full and no place to put extra logic
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/faf2115c-1dcb-49f3-ae11-77479cb7491c)
 
 100% utilization factor is not practical, it is about ~0.5-0.6
 	9. Aspect ration is heignt/width, 1 in this case, means chip is square shape othewice its rectangular
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/cde15936-9ebf-41dc-a1c9-c43cc97fe08f)
 
 	10. Lets take one more eg with different width and height
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/49c88acd-e40d-4df7-96c4-1a10f5820797)
 
 For the same logic this will give utilization factor of 0.5 and aspect ratio will be 2/4=0.5, 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/83af2ad3-beb8-4607-be3a-9d3ab5278859)
 
 
 Other unused area can be used for routing.
@@ -163,78 +173,100 @@ Preplaced call and defining locations for them
 
 	1. Let's take eg of some combination logic, with 50K gates (say).
 	2.  We did not implement this every time as part of main circuit, but we can take this peice and implement separately or granulize this circuit 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/5c7e4285-2c44-4aeb-855f-4ef45097a9c7)
 
 Lets try to cut it in 2 parts, 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0e53da9b-6252-47ea-b6e0-32dd23ce16b5)
 
 	3. 2 different blocks will look like,
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ec2ed875-a177-4a6d-b821-1284691c4c37)
 
 	4.  let's extend its input and output pins
 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/422f9e5d-aeb7-4397-a752-24f19757c52e)
+
 LHS has inputs(4) side, RHS has output(1) as per netlist.
 	5. This circuitry can we invisible to top netlist and 2 boxes can be separated out, and each can be used separately reused multiple times.
 	6. Eg memory, comparator, clock gating cell etc are few IP's where functionality is implemented  once and cells can be used multiple times, these are called preplaced cell as are placed in chip just need to define the location or arrangements of cells before placement and routing. Placement of these cells on top level chip is fixed before P&R so they are called pre placed cells.
 	7. These cells are either macros or IPs, implemented once, can be part of any Hardware.
 	8. To define location of these, let's say chip LHS is input and RHS is output and we have to place cells/block a,b,c accordingly such that location is well defined. If say we have  these blocks mostly interacting with inputs only so placement will look like below depending on design background and location of these cells can't be moved. 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/bd402098-008b-4bfa-a4e8-4b69a2221da8)
 
 	9. We need to surround these cells with decoupling capacitors
 DECOUPLING CAPACITORS-
 		a. Let circuit below be the part of some block,
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/9adc7502-f845-4292-b4f5-b7a14eee1390)
+
 		a. Whenever circuit switches, eg if any AND gate switches  from 0 to 1, some current it needs. As when transition occurs, these is always some capacitance exits which also need to be charged to represent logic 1. This is the derived from power supply to supply necessary current to all logic when switching from 0-->1. Similarly, when 1-->0  switching, Vss should also take that amount of charge due to capacitance discharge. 
 		b. In reality, when power flow to circuit from wires, there is drop in wire as wires have physical dimensions so have R, L, C associated with them repeated throughout. So multiple V drops occurs. So 1V become ~0.7V, makes charging not to go beyond 0.7V and 0.7 should be within noise margin, have specific regions for logic 0 and 1 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/532d3555-4bc0-425f-8042-3dc6a11f655e)
+
 	
 		c. Logic 1 is not guaranteed if have large distance from supply
 		d. This problem is solved using decoupling capacitor.
 		e. This capacitor is filled by charge and V across it is equivalent to power supply (1V in this case)
-		
+		![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/eac6d5b7-01c4-4eeb-bb44-e0b2fc655952)
+
 		f. Whenever circuit switches Cd send charge to circuit.
 		g. When switching activity happens it loses its some charge to circuit, when no switching, it gets charged from supply. It looks like, 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ef016b67-5d90-4022-83d5-ca9178eaccbb)
+
 	i.e takes care of local communication. 
 	
 POWER PLANNING:
 		a. Lets keep the circuitry as black box, say macro.
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/897e4b03-4837-4712-a77e-d17d1d4e131a)
+
 		b. If this macro is repeated multiple times (4) and also some circuit exists at boundaries also.
 	If have driver sending signal to load we need to make sure, that complete line maintains same signal so that load receives the same signal. 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/df4cab2b-c2ab-44b9-a5c3-9e64a8b5c484)
+
 	
 		c. Assume Driver is connected to load by 16 bit bus
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ae515e78-3c26-4338-8267-b1098c016800)
+
 	If driver sends 0-->1 signal, it should maintain same level to make sure load receives the desired levels. As no decoupling capacitor is not feasible to be added everywhere, this has to be taken care from power supply. 
 	1--> capacitor charged to VDD
 	0--> capacitor discharged to GND
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/eb74d485-217e-497f-b5b0-cfa541a52c5f)
+
 	
 	Lets say all cap to be discharged 1-->0, GND will have some bump (GROUND BOUNCE) as we have single ground line for all 16 bits, and all have to be discharged at the same time, If bump size exceed Noise margin level it may be undefined sate, 1 or 0. Since all C's now discharging, 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/547c7267-99a7-4f0a-b789-75bafb673e55)
+
 	Similar is the case for charging as all need to be charged at the same time and as only single line, so voltage drop occurs.
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/30e209f9-d2a1-4844-bf83-32509e0bc87b)
+
 	
 		d. If multiple power supply exists, such problem can be resolved as it will look to nearest power source. As shown by multiple Vdd, Vss lines
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/79db7989-99d4-43ff-b5ed-2d52c86a7367)
+
 	ie called mesh and process is called as power planning 
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/b6cf91a7-52aa-49c4-b534-69e9697d2e5a)
+
 	
 	SKY L5:
 	
 	PIN PLANNING
 	1. Lets take 2 small circuits to implement derives by 2 different clocks sources also some preplaced cells (Block a, b), making 4 inputs (Din1, Din2, clk1, clk2) and 3 outputs(Dout1, Dout2, ClkOut).
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/71c8ec58-5fa2-429f-8268-72feb12d104f)
 
 	2. Lets say 2 more sections of same circuit of input Din3, Din4 output Dout3, Dout4 and clocks clk1 and clk2 present preplaced cell (Block c), making complete design looks like below
 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/9cd9a142-1206-4141-a95a-9dd822cd832a)
 
 	3. Making proper netlist connectivity, it looks like below and is defined in verilog/VHDL and knows as netlist  
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/48f4d078-8919-4391-9b3a-d004d4b22a0e)
 
 	4. Lets place input on LHS and output RHS of chip we are planning to design 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0c7b01f3-e47c-4365-9af6-325b5037ed2b)
 
 -Pin information exists between core and die. 
 -Ordering of inputs and output are random, depending on multiple reasons
 -Handshaking between front and backend teams are required to finalize this.
 -Clocks are more bigger then data as clock sends continues signals, and drive all chip so need least resistance path for clocks.
 -No cell should be places in this areas. We block this area for P&R by logical cell placement blockage.
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/80943a72-3baa-4eb7-87d4-b069bfd7bf24)
 
 -Now after this its ready for placement and routing.
 -Standard cell placement happens in placement stage.
@@ -244,23 +276,29 @@ PIN PLANNING
 	1. There are many switches for floor planning in OPENLANE
 	2. Switches are in README.md file in directory ../o/configuration
 	3. In readme file you will get variables required/set. Below shows the switches for Floorplan  
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/06024a8e-2f21-4254-ac39-35a7c0a4491a)
 
 	4. Below are placement switches 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/916ff875-147b-48dc-96a2-61bf8f2c6684)
 
 	5. Here design/cells is/are spread as for P&R we need to start with congestion analysis. 
 	6. To set these switches so to specific TCL files eg floorplan.tcl
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c24d3cd6-6055-435e-b1c6-d3f766f2e5d7)
 
 Here setting thses values
 FP_IO_MODE shows how we want pin placements around the core and 1 --> pin placement is equidistant and 0--> pin placement is not equidistant.
 These files shows the system default settings
 	7. In  ../openlane/designs/picrorc32, if you open config.tcl, you can see set parameters.
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/326decb4-927c-45d7-93f3-82ee7434f670)
 
 	8. If core utilization is 65%, IO VERTICAL metal as 4 and horizontal metal is 3, in openlane its +1 ie Vertical metal is 5 and horizontal is 4.
 	9. Priority is 
 	system default < config.tcl < <variant>.tcl 
 	10. In <variant>.tcl, we can see core utilization is 35
-	
+	![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/56f3da36-f6d5-45f2-acb5-f235e7b07c2b)
+
 11. Run floorplan using command run_floorplan. After successful run you will see below snapshot
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/6b8da37f-9ba2-4c1f-bf45-bc12bd25fbfc)
 
 	12. Now we will check whether all set switches from config did not took over defaults from log in ../picorv32a/runs/<date_time>/logs/floorplan in file ioplacer.log
 
