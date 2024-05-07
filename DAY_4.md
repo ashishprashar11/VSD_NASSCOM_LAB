@@ -202,3 +202,53 @@ WHAT if victim itself switching and aggressor also
  Clock tree be like it give 0 clock skew (l1=l2)
 In of v line 0-->1 and a line be 1-->0  switches. Then due to glitch it impact 1-->0 with some delta delay as it ceased  the aggressor. So skew will be l1-l2+delta
 So SHEILDING is one technique to avoid crosstalk in critical clock and data nets.
+
+
+TIMING ANALYSIS WITH REAL CLOCK:
+1.	Will try to replace this 
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/21e6c639-6a9a-4372-a7b8-08278662b453)
+2.	It reduced from 24.89 to 24.88 and further to 24.37
+3.	We want this to be used by the openlane flow
+4.	Use write_verilog to write this for floorplan
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ed06d9df-6c1e-49c9-bf1d-df8d7c214e19)
+6.	Use run_floorplan
+7.	This will take new netlist 
+8.	Use run_cts,  successful cts run looks like below
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/fb6e8ff1-d736-4f01-8c84-21b087aa2948)
+9.	This run_cts will do following things
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f78ff476-0bd2-4837-ab6d-75f4fa0865ac)
+10.	To verify CTS run follow following snapshot 
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/21ea9a04-ed90-47b2-a1e7-288e7dd1e1f6)
+WITH REAL CLOCKS::SETUP TIMING
+1.	It looks like below for the case of real clocks
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f216317f-78f4-4654-ae29-73a12b035677)
+Launch < capture
+Replacing with delta
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/07062897-3e86-4657-89d7-c340523d4d2c)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/b74cd229-25a4-4b07-b4fb-bee46d0b35fb)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/2631cfaf-ba69-4299-b943-0e9851e5e98b)
+When qm outs from the mux 2 is delay of mux2
+Mux1 delay is setup time
+Capture flop not expects data when it send data out so it asks to hold th edata till exixting data goes out of mux2
+When we add clock network delay it changes as below
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d3b7c1f2-1780-4867-9315-71a1edf7598e)
+5.	Comb delay is theta +1+2.
+6.	Launch flop will rx clock edge after delta 1
+7.	Capture flop rx clock after delta 2
+8.	Combi delay >hold time
+9.	Lets take uncertainty.
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a73a9417-b8a0-42e1-a032-1629e3b21e4d)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f29d5f3d-cf5b-40fa-9620-781196b02379)
+Skew is delta1-delta2
