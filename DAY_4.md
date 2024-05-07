@@ -92,3 +92,66 @@ Run_placement
 
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/b278c00b-d64c-4423-9640-5d01137d2703)
 	
+STATIC TIMIG ANALYSIS: 
+Will take ideal clock first (Clock tree not build yet) to check for basic structure and parameters to check timing considerations.
+Lets start with signle clock of 1GHz of period 1ns, ideal clock network (no clock tree built yet)
+1.	On 0 th time one clock edge reaches flop, on Tth second edge reaches capture flop
+2.	Let combinational delay is thetha and should be less then T, if it is more than T then clock period also need to be shifted to RHS and frequency will decrease. It can be allowed as system is designed to work in specific frequency.
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/95d43bf0-2981-4775-883d-5544844de138)
+3.	Now will see practical scenario
+4.	Lets open capture flop which have several gates, R's,C's etc. lets take be MUX then when clk at 0, D input reaches from 1 pt to other after some delay. That finite delay is taken when clock 0. So output is fixed, not changes
+5.	When clock switches from 0-->1 then change happens. Qm moves from Qm to Q. so MUX2 delay also comes.
+6.	The MUX1 or MUX2 delay when logic 0 or 1 will restrict combinational circuit delay 
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/fcde1bb3-91ee-469c-b328-bb153bf578ca)
+That amount of time has to be subtract from complete time period T. As it got reduces as some time before T has to be required for mux 1 to settle. That is setup delay.
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/46eddfb8-9a46-4aa7-be6c-d442ef07b497)
+Combinational delay should be less than that (T-S) (clockperiod - setup)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/1232870f-b966-4b68-bca6-d60e78f4cd32)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/588837d7-ba1f-45ed-9bf9-212bffec8a19)
+ 
+8.	Lets identify timing path in existing design with single clock to FF1 and FF2.
+9.	Will see for set of logic with ideal and single clock
+10.	We need to identify combinational path
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/8353c8d6-f46d-4c44-94eb-166463949dd0)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7e0dcdc1-a14a-499d-a554-e0f0f7e7a98d)
+12.	To make sure no slack, we will do timing analysis on openSTA
+13.	Min analysis is hold analysis
+14.	Create a file named pre_Sta.conf
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/2fc07303-69a5-45aa-b056-a4a7fb3a105f)
+15.	It reads max and slow libraries, verilog from read verilog., link designs, SDC from specified location
+16.	Create sdc file named my_base.sdc
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/cb2b8275-4dd3-4a7d-a8a8-f13d373d9bca)
+17.	It defines clockport, sets time period
+18.	Its same file but with specific charges for STA (…./src/base.sdc)
+19.	As it is continuous flow from previous steps, you will get 0 slack
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/9b5dd5e2-3022-4523-930b-345c0e1607dc)
+20.	Old default design will have non zero slack values
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/8d61e7f4-f3bf-47dc-a51b-45060194cf3e)
+Will see for steup analysis, 
+Delay of cell is function of input slew and output load.
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a90ee0ca-4085-4abb-b61b-7d8e76cbb7a7)
+Hold doesnot signifies anything as cts not done and clock is ideal.
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/b85505bc-9152-4cb5-8e64-87844781b882)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/e1fb31ad-1380-4e6d-a3a3-0d7fb7e8ecf4)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/fcd734a7-95ef-49ae-b3e8-04112ed0f0dd)
+24.	The further slack will be as shown below
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a60bab03-66f4-4cf4-9679-b22e8cf0d351)
+25.	We will optimize the fanout using openlane as well
+Set ::env(SYNTH_MAX_FANOUT) 4
+Run_synthesis
