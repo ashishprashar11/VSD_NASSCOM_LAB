@@ -34,3 +34,5 @@ We had selected a layer and declared that as port. It will create Pin . Pin A is
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/89fa4923-d76b-4f73-9010-9abf2ef97890)
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/df6a0884-edf8-4c24-8ee8-9161c6ed51a6)
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/022bfc36-2305-4e36-9ed4-e52642eda7ec)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c93710f7-33db-44b6-a460-3028b6775fd1)
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d85a0ff1-f893-4980-9492-d5439e03f0f1)
