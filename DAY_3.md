@@ -157,4 +157,20 @@ Documantation : https://skwater-pdk--136.org.readthedocs.build
 19.	Search for poly and add one more line with with allpolynonres
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c74ddd0d-042a-498c-a624-382575be729c)
 
-17.	
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/05c8941d-dfee-468d-a947-22cb2abd221a)
+
+L8: exercise to describe DRC error in geometrical construct
+1.	Need to use the Boolean operators in sequence
+2.	After all operators are applied, whatever left is an error
+3.	Open sky130A.tech and search for DRC
+4.	Check for cifmaxwidth value
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/ef663100-9409-4855-b641-18ba6aff1514)
+1.	PMOS Drain connected to node Y gate to node A, source and substrate to node Vpwr.
+2.	NMOS drain connected to Y, gate to A and source and substrate to node Vgnd.
+3.	Need node  0 with vdd  3.3V
+4.	Pulse voltage needed between A nad Vgnd of voltage Va
+5.	Any voltage is measured wrt one box dimention i.e. 0.01micron
+6.	Make below changes for including pmos, nmos library files, supply and pulse voltages.
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/797819ec-aaee-4709-8f4e-ba859352e7b2)
+7.	Add .tran from 1ns to 20ns for transient analysis
+8.	Run this in ngspice
