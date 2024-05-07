@@ -155,3 +155,50 @@ Hold doesnot signifies anything as cts not done and clock is ideal.
 25.	We will optimize the fanout using openlane as well
 Set ::env(SYNTH_MAX_FANOUT) 4
 Run_synthesis
+BASIC TIMING ECO::
+1.	TRITONCTS AND SIGNAL INEGRITY
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f1827469-4644-43a5-a1ea-d917c6ecf343)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f04ab577-3f5f-419b-afd0-fbf94ef99d32)
+
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/07e2f026-17a8-4f27-8745-990af43d5c4c)
+It takes this clock route and calculate distance to all point, it check for midpoints. But following midpoint strategy, we do like  as shown below
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/fb169ba3-175c-4200-9ce5-30627a1fe4ed)
+Similar for second
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d14bf713-9f0e-42ca-8b57-abba986a01af)
+2.	Clock tree buffering:
+All clock trees are wires and each wire has R, C. There will be huge capacitances so there exists signal integrity problem
+Lets say below be clock path shown experiences c's
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/2f00d841-cdff-4ee4-bece-cf8ef347bf1f)
+When this waveform is fed more problematic / non ideal waveform come
+So best solution is to add buffers/repeaters
+Repeaters for clock and Data path difference is that for clock repeaters has same rise and fall time. Will now add chain of buffers
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/51c61807-327f-44bd-bd1e-b2ada1857cc8)
+It makes sure clock waveform is successfully recovered at the output
+Will try to check for NET SHIELDING
+Clock tree maintains 0 skew between launch and capture flop
+Clock nets are critical nets. It some crosstalk happens on these lines can detriate the clocking. 
+Shielding means encapsulating clock tree nets 
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/89de646f-23d0-4300-856a-97276716949f)
+So any signal/net/wire inside shield have some activity occurring and it may cause if coupling capacitance happens between this and shielding, glitch and delta problems come
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/3dc62e70-4002-446c-8440-9c0f09035667)
+It shows glitch
+If A is aggressor going under switching and coupling capacitor is there between A and V victim that is without shielding we can see glitch here as it got inverted we can get incorrect logic high which may reset memory for eg. 
+Shielding protects this victim
+Shields are either connected to VDD or ground.
+The shield donot switch
+ 
+WHAT if victim itself switching and aggressor also
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/80a2b3c5-7a20-4c1a-8d00-f4f92e8b9fb1)
+ Clock tree be like it give 0 clock skew (l1=l2)
+In of v line 0-->1 and a line be 1-->0  switches. Then due to glitch it impact 1-->0 with some delta delay as it ceased  the aggressor. So skew will be l1-l2+delta
+So SHEILDING is one technique to avoid crosstalk in critical clock and data nets.
