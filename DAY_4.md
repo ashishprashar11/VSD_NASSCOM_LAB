@@ -36,3 +36,59 @@ We had selected a layer and declared that as port. It will create Pin . Pin A is
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/022bfc36-2305-4e36-9ed4-e52642eda7ec)
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c93710f7-33db-44b6-a460-3028b6775fd1)
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d85a0ff1-f893-4980-9492-d5439e03f0f1)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/db010e50-b20e-4b6b-8422-5c813677bdd1)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7d7debcc-12a1-42ff-ae1c-a5f66a626ea7)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/314026f2-2592-4566-8d0c-3dddc62f6f7b)
+Have skew of 0 (x9'+y15) same for delay as well.
+If either if 2 are 1 then non 0 skew will come
+It may leadd to setup-hold voilations
+POWER ARE CLOCK TREE SYNTHESIS
+
+CONSIDERATIONS:
+FOR CERATAIN PERIOD OF TIME, CERTAIN PART OF CIRCUIT IS NOT ACTIVE, SO CAN STOP CLOCK THERE. THAT IS CALLED POWER AWARE CTS
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/6a394b02-b700-47a3-aeca-927acf30bc09)
+1.	Open README.md file in configuration folder this file will have variable information
+
+ ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c9616699-7556-45d3-86f7-57fe8d91eb7a)
+
+2.	Synthesis has already reported the delays
+
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d531e603-8335-4dba-8d1c-7e091d7e94f6)
+5.	Enable buffering and sizing as below
+
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/9949bcfd-79cd-45a7-afad-82168e21d537)
+6.	To check driving strength follow below steps
+
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/62ebfb90-744a-41fa-b384-668f5d8c85d9)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/d44f4b7e-a34f-413d-937e-8f68a4afbbc5)
+8.	Run floorplan to check whether changes are taken in p&r flow
+9.	It ended with error
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/4be04ec5-0a46-4f30-90a8-703e72b8e016)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/0d154a66-020d-49b9-8563-2b4b8a043ad1)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/7068af06-c348-4c79-84a7-cc9d3bd703a0)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/61984298-6c2c-42d2-9284-a28a467e4b64)
+Run_placement
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/1980dae5-43c9-4fd0-815f-b2cab6c56e10)
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/49981afd-21f7-40f0-bada-0f47089f84de)
+17.	Find cell vsdnew by zooming in. it will look like below
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/1a204ce3-7333-4fe9-b07b-59c062774d41)
+
+18.	To know how it is connected type expand in terminal, you will get its connections
+
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/b278c00b-d64c-4423-9640-5d01137d2703)
+	
