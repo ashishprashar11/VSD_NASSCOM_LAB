@@ -252,3 +252,8 @@ When we add clock network delay it changes as below
 
 ![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f29d5f3d-cf5b-40fa-9620-781196b02379)
 Skew is delta1-delta2
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/f0762311-e11f-4f0a-8527-9f034b7de677)
+10.	Read verilog 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/c722c4bc-88a5-40d8-9f19-7422a7b9435a)
+12.	Slack expected to be reduced 
+![image](https://github.com/ashishprashar11/VSD_NASSCOM_LAB/assets/169080904/a0c5a8f1-1e78-49a7-a0c6-4f31ea776094)
